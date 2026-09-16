@@ -20,8 +20,10 @@ BASE_URL = (
 )
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 "
-                  "(compatible; UKDividendCalendar/1.0)"
+    "User-Agent": (
+        "Mozilla/5.0 "
+        "(compatible; UKDividendCalendar/1.0)"
+    )
 }
 
 TODAY = date.today()
@@ -46,7 +48,7 @@ def parse_date(value):
 
     match = re.match(
         r"(\d{1,2})-([A-Za-z]{3})-(\d{2,4})",
-        value
+        value,
     )
 
     if match:
@@ -57,7 +59,7 @@ def parse_date(value):
 
         return datetime.strptime(
             f"{day}-{month}-{year}",
-            "%d-%b-%Y"
+            "%d-%b-%Y",
         ).date()
 
     return None
@@ -95,7 +97,7 @@ def find_dividend_events(ticker, company):
     response = requests.get(
         url,
         headers=HEADERS,
-        timeout=30
+        timeout=30,
     )
 
     response.raise_for_status()
@@ -142,15 +144,17 @@ def find_dividend_events(ticker, company):
                 ):
                     continue
 
-                events.append({
-                    "ticker": ticker,
-                    "company": company,
-                    "dividend": dividend,
-                    "type": div_type,
-                    "declaration": declaration,
-                    "ex_date": ex_date,
-                    "payment_date": payment_date,
-                })
+                events.append(
+                    {
+                        "ticker": ticker,
+                        "company": company,
+                        "dividend": dividend,
+                        "type": div_type,
+                        "declaration": declaration,
+                        "ex_date": ex_date,
+                        "payment_date": payment_date,
+                    }
+                )
 
             except (ValueError, IndexError):
                 continue
@@ -189,10 +193,9 @@ def make_event(
     dividend,
     div_type,
     event_type,
-    event_date
+    event_date,
 ):
     if event_type == "EX-DIVIDEND":
-
         summary = (
             f"{ticker} — {company} — "
             f"EX-DIVIDEND — {dividend}"
@@ -206,7 +209,6 @@ def make_event(
         )
 
     else:
-
         summary = (
             f"{ticker} — {company} — "
             f"PAYMENT — {dividend}"
@@ -223,43 +225,40 @@ def make_event(
         "%Y%m%dT%H%M%SZ"
     )
 
+    uid = make_uid(
+        ticker,
+        event_type,
+        event_date,
+    )
+
+    start_date = ics_date(event_date)
+    end_date = ics_date(
+        event_date + timedelta(days=1)
+    )
+
     return [
         "BEGIN:VEVENT",
-
-        f"UID:{make_uid("
-        f"ticker, event_type, event_date)}",
-
+        f"UID:{uid}",
         f"DTSTAMP:{stamp}",
-
-        f"DTSTART;VALUE=DATE:"
-        f"{ics_date(event_date)}",
-
-        f"DTEND;VALUE=DATE:"
-        f"{ics_date(event_date + timedelta(days=1))}",
-
+        f"DTSTART;VALUE=DATE:{start_date}",
+        f"DTEND;VALUE=DATE:{end_date}",
         f"SUMMARY:{escape_ics(summary)}",
-
-        f"DESCRIPTION:"
-        f"{escape_ics(description)}",
-
+        f"DESCRIPTION:{escape_ics(description)}",
         "TRANSP:TRANSPARENT",
-
         "END:VEVENT",
     ]
 
 
 def build_calendar():
-
     all_events = []
 
     for ticker, company in COMPANIES.items():
-
         print(f"Getting {ticker}...")
 
         try:
             events = find_dividend_events(
                 ticker,
-                company
+                company,
             )
 
             all_events.extend(events)
@@ -270,15 +269,11 @@ def build_calendar():
             )
 
         except Exception as exc:
-
-            print(
-                f"  ERROR: {exc}"
-            )
+            print(f"  ERROR: {exc}")
 
     unique = {}
 
     for event in all_events:
-
         key = (
             event["ticker"],
             event["ex_date"],
@@ -305,10 +300,9 @@ def build_calendar():
         all_events,
         key=lambda x: (
             x["ex_date"],
-            x["ticker"]
-        )
+            x["ticker"],
+        ),
     ):
-
         lines.extend(
             make_event(
                 event["ticker"],
@@ -335,7 +329,7 @@ def build_calendar():
 
     Path("dividends.ics").write_text(
         "\r\n".join(lines) + "\r\n",
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
 
