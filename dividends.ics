@@ -4,5 +4,77 @@ PRODID:-//UK Dividend Calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:UK Dividends
-X-WR-CALDESC:Ex-dividend and payment dates
+X-WR-CALDESC:Dividend ex-dividend and payment dates
+BEGIN:VEVENT
+UID:BARC-EX-DIVIDEND-20260806@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260806
+DTEND;VALUE=DATE:20260807
+SUMMARY:BARC — Barclays — EX-DIVIDEND — 5.9p
+DESCRIPTION:Barclays (BARC)\nDividend: 5.9p\nType: Interim dividend\nEx-dividend date: 06 Aug 2026\nPayment date: 15 Sep 2026\nSource: https://dividendregistry.com/dividends/BARC/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:BARC-PAYMENT-20260915@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+SUMMARY:BARC — Barclays — PAYMENT — 5.9p
+DESCRIPTION:Barclays (BARC)\nDividend: 5.9p\nType: Interim dividend\nPayment date: 15 Sep 2026\nEx-dividend date: 06 Aug 2026\nSource: https://dividendregistry.com/dividends/BARC/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:LGEN-EX-DIVIDEND-20260820@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260820
+DTEND;VALUE=DATE:20260821
+SUMMARY:LGEN — Legal & General — EX-DIVIDEND — 6.24p
+DESCRIPTION:Legal & General (LGEN)\nDividend: 6.24p\nType: Interim dividend\nEx-dividend date: 20 Aug 2026\nPayment date: 25 Sep 2026\nSource: https://dividendregistry.com/dividends/LGEN/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:LGEN-PAYMENT-20260925@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+SUMMARY:LGEN — Legal & General — PAYMENT — 6.24p
+DESCRIPTION:Legal & General (LGEN)\nDividend: 6.24p\nType: Interim dividend\nPayment date: 25 Sep 2026\nEx-dividend date: 20 Aug 2026\nSource: https://dividendregistry.com/dividends/LGEN/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:AV-EX-DIVIDEND-20260903@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260903
+DTEND;VALUE=DATE:20260904
+SUMMARY:AV — Aviva — EX-DIVIDEND — 14p
+DESCRIPTION:Aviva (AV)\nDividend: 14p\nType: Interim dividend\nEx-dividend date: 03 Sep 2026\nPayment date: 15 Oct 2026\nSource: https://dividendregistry.com/dividends/AV/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:AV-PAYMENT-20261015@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:AV — Aviva — PAYMENT — 14p
+DESCRIPTION:Aviva (AV)\nDividend: 14p\nType: Interim dividend\nPayment date: 15 Oct 2026\nEx-dividend date: 03 Sep 2026\nSource: https://dividendregistry.com/dividends/AV/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:GRG-EX-DIVIDEND-20260910@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20260911
+SUMMARY:GRG — Greggs — EX-DIVIDEND — 19p
+DESCRIPTION:Greggs (GRG)\nDividend: 19p\nType: Interim dividend\nEx-dividend date: 10 Sep 2026\nPayment date: 09 Oct 2026\nSource: https://dividendregistry.com/dividends/GRG/
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:GRG-PAYMENT-20261009@uk-dividend-calendar
+DTSTAMP:20260916T111701Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+SUMMARY:GRG — Greggs — PAYMENT — 19p
+DESCRIPTION:Greggs (GRG)\nDividend: 19p\nType: Interim dividend\nPayment date: 09 Oct 2026\nEx-dividend date: 10 Sep 2026\nSource: https://dividendregistry.com/dividends/GRG/
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR
